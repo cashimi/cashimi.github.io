@@ -1,0 +1,12 @@
+body{
+  background-color: #FFFDD0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+
+footer {
+  text-align: right;
+  padding: 100px;
+  background-color: #FFFDD0;
+  color: black;
+}
