@@ -2,20 +2,7 @@ body {
   background-color: #FFFDD0;
   font-family: 'Couriers', monospace;
   font-size: 20px;
-}
-
-.fade {
-  animation: fadeIn 5s forwards;
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 70px;
+  color: whitesmoke;
 }
 
 footer {
