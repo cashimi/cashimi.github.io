@@ -1,12 +1,29 @@
-body{
+body {
   background-color: #FFFDD0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Couriers', monospace;
   font-size: 20px;
 }
 
+.fade {
+  animation: fadeIn 5s forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 70px;
+}
+
 footer {
-  text-align: right;
-  padding: 100px;
-  background-color: #FFFDD0;
-  color: black;
+    text-align: right;
+    position: fixed;
+    height: 30px;
+    bottom: 0px;
+    left: 0px;
+    right: 10px;
+
 }
