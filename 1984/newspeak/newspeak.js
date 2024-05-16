@@ -1,29 +1,28 @@
 var ballx = 300;
 var bally = 300;
-var ballSize = 40;
+var ballSize = 150;
 var score = 0;
 var gameState = "L1";
-var img;
-var back;
-let capture;
+var blackwhite;
+var crimestop;
+var doublethink;
+var unperson;
 
 function preload() {
-  img = loadImage('https://cashimi.github.io/graffiti/grafstar.png');
-  back = loadImage('https://cashimi.github.io/graffiti/brick.png');
+  blackwhite = loadImage('https://cashimi.github.io/1984/images/blackwhite.png');
+  crimestop = loadImage('https://cashimi.github.io/1984/images/crimestop.png');
+  doublethink = loadImage('https://cashimi.github.io/1984/images/doublethink.png');
+  unperson = loadImage('https://cashimi.github.io/1984/images/unperson.png');
 } //end preload
 
 function setup() {
 createCanvas(600, 600);
 textAlign(CENTER);
 textSize(20);
-capture = createCapture(VIDEO);
-capture.size(400, 400);
-capture.hide();
 } //end setup
 
-
 function draw() {
-background(220);
+background(63,63,63);
 if(gameState == "L1"){
   levelOne();
 }
@@ -33,15 +32,18 @@ if(gameState == "L2"){
 if(gameState == "L3"){
   levelThree();
 }
+if(gameState == "L4"){
+  levelFour();
+}
 if(gameState == "win"){
   youWin();
 }
-
-text(("Score: " + score), width/2, 40);
+text((""), width/2, 40);
 } //end draw
 
 function levelOne(){
-  text("Level 1", width/2, height-20);
+    fill('white');
+  text("denying the 'truth' because the Party claims so", width/2, height-20);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
   if (distToBall < ballSize/2){
     ballx = random(width);
@@ -52,15 +54,11 @@ function levelOne(){
   if(score>= 5){
     gameState = "L2";
   }
-  
-  ellipse(ballx, bally, ballSize, ballSize);
-  line(ballx, bally, mouseX, mouseY);
+  image(blackwhite, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
 } //end of level 1
 
 function levelTwo(){
-  background(back); //200,100,0
-  image(capture, 0, 0, width, height);
-  text("Level 2!", width/2, height-20);
+  text("rid oneself of unwanted thoughts", width/2, height-20);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
   if (distToBall < ballSize/2){
     ballx = random(width);
@@ -71,37 +69,40 @@ function levelTwo(){
   if(score>= 10){
     gameState = "L3";
   }
-  //ellipse(ballx, bally, ballSize, ballSize);
-  //line(ballx, bally, mouseX, mouseY);
-  image(img, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
+  image(crimestop, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
 } //end of level 2
 
 function levelThree(){
-  background(0,100,200);
-  text("Level 3!", width/2, height-20);
+    text(" simultaneously accepting two contradictory beliefs", width/2, height-20);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
   if (distToBall < ballSize/2){
     ballx = random(width);
     bally = random(height);
     score = score + 1;
-    ballSize = ballSize - 5;
-    image(capture, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
-    filter(ERODE);
   }
   
   if(score>= 15){
-    gameState = "win";
-    background(random(255));
+    gameState = "L4";
   }
-  //ellipse(ballx, bally, ballSize, ballSize);
-  //line(ballx, bally, mouseX, mouseY);
-  image(capture, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
-  filter(ERODE);
+  image(doublethink, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
 } //end of level 3
 
+function levelFour(){
+    text("a person who has been vaporized", width/2, height-20);
+  var distToBall = dist(ballx, bally, mouseX, mouseY);
+  if (distToBall < ballSize/2){
+    ballx = random(width);
+    bally = random(height);
+    score = score + 1;
+  }
+  
+  if(score>= 20){
+    gameState = "win";
+  }
+  image(unperson, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
+} //end of level 4
+
 function youWin(){
-  background(200,100,2000);
-  textSize(100);
-  text("You Win", width/2, height-20);
-  textSize(20);
+  text("You did a doubleplusgood job. Aren't things simpler now?", width/2, height-20);
+  textSize(22);
 }
