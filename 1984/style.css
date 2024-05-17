@@ -18,6 +18,10 @@ h1 {
   font-size: 70px;
 }
 
+b {
+    color: red;
+}
+
 footer {
     text-align: right;
     position: fixed;
